@@ -1,0 +1,172 @@
+ /* CSS Reset and Global Styles */
+        :root {
+            /* Define colors based on the dark design */
+            --color-background-dark: #1a1a1a;
+            --color-text-light: #ffffff;
+            --color-text-secondary: #aaaaaa;
+            --color-gradient-start: #E94C89; /* Pink */
+            --color-gradient-end: #F5774F; /* Orange */
+            --font-family-inter: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family-inter);
+            color: var(--color-text-light);
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* ------------------------------------------- */
+        /* Main Component Container */
+        /* ------------------------------------------- */
+        .testimonial-slider-container {
+            max-width: 1200px;
+            width: 90%;
+            padding: 80px 40px;
+            box-sizing: border-box;
+            background-color: var(--color-background-dark);
+        }
+
+        /* ------------------------------------------- */
+        /* Quote Area */
+        /* ------------------------------------------- */
+        .quote-display {
+            min-height: 250px; /* Ensure space even with short quotes to prevent CLS */
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .quote-text {
+            font-size: 38px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            max-width: 1100px;
+        }
+        
+        .quote-author {
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--color-text-light);
+            margin-top: 10px;
+        }
+
+        .quote-title {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin-left: 8px;
+        }
+        
+        /* ------------------------------------------- */
+        /* Avatars and Navigation Bar */
+        /* ------------------------------------------- */
+        .slider-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .avatar-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .client-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 3px solid transparent;
+            opacity: 0.6;
+            transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
+        }
+
+        .client-avatar:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .client-avatar.is-active {
+            opacity: 1;
+            border-color: var(--color-gradient-start);
+            transform: scale(1.05);
+        }
+
+        /* The Gradient Line Separator */
+        .gradient-separator {
+            height: 3px;
+            flex-grow: 1;
+            margin: 0 40px;
+            background: linear-gradient(90deg, var(--color-gradient-start) 0%, var(--color-gradient-end) 100%);
+            border-radius: 2px;
+        }
+        
+        /* Navigation Arrows */
+        .nav-arrows {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: var(--color-text-light);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .nav-button:hover {
+            color: var(--color-gradient-end);
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            color: var(--color-text-secondary);
+            cursor: not-allowed;
+            opacity: 0.5;
+            transform: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .testimonial-slider-container {
+                padding: 40px 20px;
+            }
+            .quote-text {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+            .quote-author, .quote-title {
+                font-size: 16px;
+            }
+            .gradient-separator {
+                margin: 0 20px;
+            }
+        }
+        
+        @media (max-width: 500px) {
+             .slider-controls {
+                flex-wrap: wrap;
+                justify-content: center;
+             }
+             .gradient-separator {
+                display: none; /* Hide line on very small screens */
+             }
+             .nav-arrows {
+                margin-top: 20px;
+             }
+             .avatar-group {
+                gap: 10px;
+             }
+        }
